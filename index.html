@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate a minimalist portfolio website using your GitHub and LinkedIn profiles">
+    <title>Portfolio Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <main class="container">
+        <header class="header" role="banner">
+            <h1>Portfolio Generator</h1>
+            <p>Create a minimalist portfolio website in seconds</p>
+        </header>
+
+        <section class="generator-form" aria-labelledby="form-title">
+            <h2 id="form-title" class="visually-hidden">Portfolio Generator Form</h2>
+            <form id="portfolioForm" novalidate>
+                <div class="form-group">
+                    <label for="github">GitHub Username</label>
+                    <div class="input-wrapper">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                        <input 
+                            type="text" 
+                            id="github" 
+                            name="github"
+                            placeholder="username" 
+                            required
+                            aria-describedby="github-error"
+                        >
+                    </div>
+                    <span class="error" id="github-error" role="alert"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn Profile URL <small>(optional)</small></label>
+                    <div class="input-wrapper">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <input 
+                            type="url" 
+                            id="linkedin" 
+                            name="linkedin"
+                            pattern="https:\/\/[w]{0,3}\.?linkedin\.com\/.*"
+                            placeholder="https://linkedin.com/in/username" 
+                            aria-describedby="linkedin-error"
+                        >
+                    </div>
+                    <span class="error" id="linkedin-error" role="alert"></span>
+                </div>
+
+                <button type="submit" class="generate-btn">
+                    Generate Portfolio
+                </button>
+            </form>
+        </section>
+
+        <section class="preview-section hidden" id="previewSection" aria-labelledby="preview-title">
+            <h2 id="preview-title">Preview</h2>
+            <div class="preview-container">
+                <iframe id="previewFrame" title="Portfolio Preview" sandbox="allow-scripts"></iframe>
+            </div>
+            
+            <div class="download-section">
+                <button id="downloadBtn" class="download-btn" aria-label="Download portfolio files">
+                    Download Files
+                </button>
+                
+                <div class="instructions" role="complementary" aria-labelledby="instructions-title">
+                    <h3 id="instructions-title">How to Deploy Your Portfolio</h3>
+                    <ol>
+                        <li>Download the files using the button above</li>
+                        <li>Create a new repository named <code id="repoName">username.github.io</code></li>
+                        <li>Upload all the downloaded files to your repository</li>
+                        <li>Enable GitHub Pages in your repository settings</li>
+                        <li>Your portfolio will be live at <code id="portfolioUrl">https://username.github.io</code></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Project by <a href="https://github.com/yashrajnayak" target="_blank" rel="noopener noreferrer">Yashraj Nayak</a></p>
+            <p><a href="https://github.com/yashrajnayak/portfolio-generator" target="_blank" rel="noopener noreferrer">View on GitHub</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
